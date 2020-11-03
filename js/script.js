@@ -51,6 +51,7 @@ function addTask(nombreTarea, fechaTarea, completoTarea) {
   fetch('https://js2-tareas-api.netlify.app/api/tareas?uid=17', fetchOptions)
     .then((response) => response.json())
     .then((data) => {
+      // eslint-disable-next-line no-console
       console.log(data);
       // Agrega la tarea al DOM.
       appendTaskDOM(nuevaTarea);
@@ -60,8 +61,6 @@ function addTask(nombreTarea, fechaTarea, completoTarea) {
   contadorTareas++;
   // Se guarda el contador de tareas en localStorage.
   localStorage.setItem('contador', contadorTareas);
-  // Guarda la lista de tareas en localStorage.
-  localStorage.setItem('tareas', JSON.stringify(tareas));
 }
 
 // taskStatus(): Actualiza el estado de una tarea.
@@ -154,7 +153,7 @@ for (let i = 0; i < tareas.length; i++) {
 const formulario = document.getElementById('new-task-form');
 
 // Event handler para el evento 'submit' del formulario.
-// Crea una nueva tarea.
+
 formulario.addEventListener('submit', (event) => {
   // Se cancela el comportamiento default del formulario.
   event.preventDefault();
